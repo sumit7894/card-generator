@@ -1,6 +1,8 @@
 import React,{useState} from "react";
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Body =()=>{
     const [name,setName] = useState("");
@@ -72,6 +74,23 @@ const Body =()=>{
         setSendMonth(month);
         setSendYear(year);
         setSendCvc(cvc);
+        toast.success('Success! You have made this form smile with your input', {
+          position: 'top-right',
+          autoClose: 3000, // Auto close the toast after 3 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        } else{
+          toast.error('Oops! Looks like your keyboard had a slip-and-fall accident', {
+            position: 'top-right',
+            autoClose: 3000, // Auto close the toast after 3 seconds
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
         }
     }
   return(
@@ -111,6 +130,7 @@ const Body =()=>{
           <CardFront 
           name = {sendName} number ={sendNumber} month={sendMonth} year={sendYear}/>
           <CardBack cvc={sendCvc}/>
+          <ToastContainer />
         </form>
         </div>
       </div>

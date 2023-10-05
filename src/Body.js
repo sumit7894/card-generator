@@ -9,13 +9,13 @@ const Body =()=>{
     const [month,setMonth] = useState("");
     const [year,setYear] = useState("");
     const [cvc,setCvc] = useState("");
-    const [validationError,setValidationError] = useState(false);
+    
 
-    const [sendName,setSendName] = useState("");
-    const [sendNumber,setSendNumber] = useState("");
-    const [sendMonth,setSendMonth] = useState("");
-    const [sendYear,setSendYear] = useState("");
-    const [sendCvc,setSendCvc] = useState("");
+    // const [sendName,setSendName] = useState("");
+    // const [sendNumber,setSendNumber] = useState("");
+    // const [sendMonth,setSendMonth] = useState("");
+    // const [sendYear,setSendYear] = useState("");
+    // const [sendCvc,setSendCvc] = useState("");
 
     const [errors,setErrors] = useState({
       name:"",
@@ -24,7 +24,6 @@ const Body =()=>{
       cvc:"",
     });
     let newErrors = {};
-    let flag= false;
     const handleSubmit = (e)=>{
         let pattern = /[a-zA-Z]/;
         e.preventDefault();
@@ -33,23 +32,19 @@ const Body =()=>{
         //validation for name
         if(name.trim() ===""){
           newErrors.name = 'Card holder name required';
-          setValidationError(true);
         } else if(/\d/.test(name)){
           newErrors.name = 'Card holder name cannot take numbers';
-          setValidationError(true);
         }
         //validation for number
         if(cardNumber.trim() ===""){
           newErrors.cardNumber="Card number required";
-          setValidationError(true);
         } else if(pattern.test(cardNumber)){
           newErrors.cardNumber = "Card number should be numeric";
-          setValidationError(true);
         }
         //validation for month
         if(month.trim() ===""){
           newErrors.date="Month required";
-        } else if(year.trim()==""){
+        } else if(year.trim()===""){
           newErrors.date="Year required";
         }
         else if(pattern.test(month)){
@@ -72,13 +67,13 @@ const Body =()=>{
           newErrors.cvc="CVC must be 3 digit";
         }
         setErrors(newErrors);
-        if(Object.keys(newErrors).length === 0){
-        setSendName(name.toUpperCase());
-        setSendNumber(cardNumber.replace(/(\d{4})/g, '$1 ').trim());
-        setSendMonth(month);
-        setSendYear(year);
-        setSendCvc(cvc);
-        }
+        // if(Object.keys(newErrors).length === 0){
+        // setSendName(name.toUpperCase());
+        // setSendNumber(cardNumber.replace(/(\d{4})/g, '$1 ').trim());
+        // setSendMonth(month);
+        // setSendYear(year);
+        // setSendCvc(cvc);
+        // }
     }
   return(
     <div  className="container">

@@ -1,7 +1,6 @@
 import React,{useState} from "react";
-// import { ReactDOM } from "react-dom/client";
-// import CardFront from "./CardFront";
-// import CardBack from "./CardBack";
+import CardFront from "./CardFront";
+import CardBack from "./CardBack";
 
 const Body =()=>{
     const [name,setName] = useState("");
@@ -11,11 +10,11 @@ const Body =()=>{
     const [cvc,setCvc] = useState("");
     
 
-    // const [sendName,setSendName] = useState("");
-    // const [sendNumber,setSendNumber] = useState("");
-    // const [sendMonth,setSendMonth] = useState("");
-    // const [sendYear,setSendYear] = useState("");
-    // const [sendCvc,setSendCvc] = useState("");
+    const [sendName,setSendName] = useState("");
+    const [sendNumber,setSendNumber] = useState("");
+    const [sendMonth,setSendMonth] = useState("");
+    const [sendYear,setSendYear] = useState("");
+    const [sendCvc,setSendCvc] = useState("");
 
     const [errors,setErrors] = useState({
       name:"",
@@ -67,13 +66,13 @@ const Body =()=>{
           newErrors.cvc="CVC must be 3 digit";
         }
         setErrors(newErrors);
-        // if(Object.keys(newErrors).length === 0){
-        // setSendName(name.toUpperCase());
-        // setSendNumber(cardNumber.replace(/(\d{4})/g, '$1 ').trim());
-        // setSendMonth(month);
-        // setSendYear(year);
-        // setSendCvc(cvc);
-        // }
+        if(Object.keys(newErrors).length === 0){
+        setSendName(name.toUpperCase());
+        setSendNumber(cardNumber.replace(/(\d{4})/g, '$1 ').trim());
+        setSendMonth(month);
+        setSendYear(year);
+        setSendCvc(cvc);
+        }
     }
   return(
     <div  className="container">
@@ -109,9 +108,9 @@ const Body =()=>{
           </div>
           </div>
           <button type="submit" className="buttonConfirm">Confirm</button>
-          {/* <CardFront 
+          <CardFront 
           name = {sendName} number ={sendNumber} month={sendMonth} year={sendYear}/>
-          <CardBack cvc={sendCvc}/> */}
+          <CardBack cvc={sendCvc}/>
         </form>
         </div>
       </div>
